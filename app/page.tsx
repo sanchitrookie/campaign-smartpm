@@ -177,15 +177,30 @@ export default function AkshayTritiyaLanding() {
 
       if (!hasAutoScrolled) {
         inactivityTimer = setTimeout(() => {
-          // Find the video element and scroll to it
-          if (videoRef.current) {
-            videoRef.current.scrollIntoView({ behavior: "smooth" })
-            videoRef.current.play().catch((err) => console.log("Video play error:", err))
-            videoRef.current.muted = false // Unmute the video
-            setHasAutoScrolled(true)
-          }
-        }, 20000) // 20 seconds
+  if (videoRef.current) {
+    videoRef.current.scrollIntoView({ behavior: "smooth" })
+
+    // ⏳ Delay to ensure the element is rendered and in view
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.muted = false
+        const playPromise = videoRef.current.play()
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log("✅ Video autoplay triggered after scroll")
+            })
+            .catch((err) => {
+              console.log("🚫 Autoplay blocked by browser:", err)
+            })
+        }
+        setHasAutoScrolled(true)
       }
+    }, 500) // ⏱️ Delay ensures video is visible and rendered
+  }
+}, 20000)
+
     }
 
     // Start the timer
@@ -522,7 +537,6 @@ export default function AkshayTritiyaLanding() {
                   poster="/images/gold-background.jpg"
                   onError={handleVideoError}
                 >
-                  {/* Use multiple source elements with different path patterns */}
                   <source src="/videos/Video-815.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
