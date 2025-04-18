@@ -523,10 +523,7 @@ export default function AkshayTritiyaLanding() {
                   onError={handleVideoError}
                 >
                   {/* Use multiple source elements with different path patterns */}
-                  <source src="/videos/gold-sip-benefits.mp4" type="video/mp4" />
-                  <source src="videos/gold-sip-benefits.mp4" type="video/mp4" />
-                  <source src="../videos/gold-sip-benefits.mp4" type="video/mp4" />
-                  <source src="https://campaign.smartpm.fyi/videos/gold-sip-benefits.mp4" type="video/mp4" />
+                  <source src="/videos/Video-815.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               ) : (
