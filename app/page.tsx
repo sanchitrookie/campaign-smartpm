@@ -10,7 +10,6 @@ export default function AkshayTritiyaLanding() {
   const mainCtaRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoSectionRef = useRef<HTMLElement>(null)
-  const playPromise
   const [cycleIndex, setCycleIndex] = useState(0)
   const [testimonialIndex, setTestimonialIndex] = useState(0)
   const [isMainCtaVisible, setIsMainCtaVisible] = useState(true)
